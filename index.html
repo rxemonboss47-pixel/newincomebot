@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>টাকা আয় করুন - বিজ্ঞাপন দেখুন</title>
-    <script src='//libtl.com/sdk.js' data-zone='10382107' data-sdk='show_10382107'></script>
+    <script src='//libtl.com/sdk.js' data-zone='10442422' data-sdk='show_10442422'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #4a6bff;
@@ -13,11 +14,18 @@
             --success-color: #28a745;
             --danger-color: #dc3545;
             --warning-color: #ffc107;
-            --dark-color: #1a1a2e;
-            --light-color: #f8f9fa;
-            --card-bg: #16213e;
-            --text-color: #e6e6e6;
-            --text-muted: #adb5bd;
+            --dark-color: #2c3e50;
+            --light-color: #ffffff;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --text-muted: #666666;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --border-radius: 12px;
+            --gradient-primary: linear-gradient(135deg, #4a6bff, #8a2be2);
+            --gradient-success: linear-gradient(135deg, #28a745, #20c997);
+            --gradient-warning: linear-gradient(135deg, #ff7d4a, #ff416c);
+            --gradient-danger: linear-gradient(135deg, #dc3545, #ff416c);
+            --gradient-mining: linear-gradient(135deg, #00b09b, #96c93d);
         }
         
         * {
@@ -27,111 +35,150 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             color: var(--text-color);
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding: 15px;
-            padding-bottom: 70px; /* নেভিগেশন বারের জন্য স্থান */
+            padding: 20px;
+            padding-bottom: 100px;
         }
         
         .container {
             max-width: 500px;
             width: 100%;
             margin: 0 auto;
-            background: rgba(22, 33, 62, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            background: var(--light-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
             overflow: hidden;
             padding-bottom: 20px;
-            backdrop-filter: blur(10px);
         }
         
         .header {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            background: var(--gradient-primary);
             color: white;
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
             position: relative;
             border-bottom: 5px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.8s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .header h1 {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .badge {
             display: inline-block;
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 5px 12px;
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 6px 15px;
             border-radius: 50px;
             font-size: 12px;
             font-weight: 600;
-            margin-top: 10px;
+            margin-top: 12px;
+            backdrop-filter: blur(10px);
         }
         
-        .user-card, .stat-card, .progress-container, .referral-section, .rate-info, .withdraw-section, .ad-status {
+        .user-card, .stat-card, .progress-container, .referral-section, .rate-info, .withdraw-section, .ad-status, .task-card, .mining-section {
             background-color: var(--card-bg);
             margin: 15px;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideUp 0.5s ease;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .user-card:hover, .stat-card:hover, .task-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
         .user-card {
             display: flex;
             align-items: center;
+            animation-delay: 0.1s;
         }
         
         .user-avatar {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 24px;
             color: white;
-            margin-right: 15px;
+            margin-right: 20px;
+            box-shadow: 0 4px 10px rgba(74, 107, 255, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
         .stats-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
+            animation-delay: 0.2s;
         }
         
         .stat-card {
             text-align: center;
-            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
-        .stat-card:hover {
-            transform: translateY(-5px);
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
         }
         
         .stat-card h3 {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-muted);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .stat-card p {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--dark-color);
+            margin-bottom: 5px;
         }
         
         .progress-container {
-            background: linear-gradient(to right, #0f0c29, #302b63);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation-delay: 0.3s;
         }
         
         .progress-header {
@@ -141,19 +188,48 @@
         }
         
         .progress-bar {
-            height: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
+            height: 12px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
             overflow: hidden;
             margin-bottom: 10px;
+            position: relative;
         }
         
         .progress-fill {
             height: 100%;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            border-radius: 5px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
             width: 0%;
-            transition: width 0.5s ease;
+            transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-image: linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.15) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0.15) 75%,
+                transparent 75%,
+                transparent
+            );
+            background-size: 1rem 1rem;
+            animation: progressStripes 1s linear infinite;
+        }
+        
+        @keyframes progressStripes {
+            0% { background-position: 1rem 0; }
+            100% { background-position: 0 0; }
         }
         
         .progress-text {
@@ -161,17 +237,19 @@
             justify-content: space-between;
             font-size: 12px;
             color: var(--text-muted);
+            font-weight: 500;
         }
         
         .action-buttons {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 10px;
+            gap: 12px;
             margin: 15px;
+            animation-delay: 0.4s;
         }
         
         .btn {
-            padding: 15px;
+            padding: 16px;
             border: none;
             border-radius: 10px;
             font-weight: 600;
@@ -181,37 +259,68 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            transform: translateX(0);
         }
         
         .btn-primary { 
-            background: linear-gradient(to right, var(--primary-color), #6a11cb);
+            background: var(--gradient-primary);
             color: white; 
+            box-shadow: 0 4px 15px rgba(74, 107, 255, 0.3);
         }
         
         .btn-success { 
-            background: linear-gradient(to right, var(--success-color), #11998e);
+            background: var(--gradient-success);
             color: white; 
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
         }
         
         .btn-danger { 
-            background: linear-gradient(to right, var(--danger-color), #ff416c);
+            background: var(--gradient-danger);
             color: white; 
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
         }
         
         .btn-warning { 
-            background: linear-gradient(to right, var(--warning-color), #ff7e5f);
+            background: var(--gradient-warning);
             color: white; 
+            box-shadow: 0 4px 15px rgba(255, 125, 74, 0.3);
+        }
+        
+        .btn-mining { 
+            background: var(--gradient-mining);
+            color: white; 
+            box-shadow: 0 4px 15px rgba(0, 176, 155, 0.3);
         }
         
         .btn-secondary { 
-            background: linear-gradient(to right, #2c3e50, #4ca1af);
-            color: var(--text-color); 
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white; 
             border: 1px solid rgba(255, 255, 255, 0.1); 
+            box-shadow: 0 4px 10px rgba(108, 117, 125, 0.2);
         }
         
         .btn:hover { 
             transform: translateY(-3px); 
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); 
         }
         
         .btn:active { 
@@ -226,53 +335,60 @@
         }
         
         .btn i { 
-            margin-right: 8px; 
+            margin-right: 10px; 
             font-size: 18px; 
         }
         
         .section-title {
             font-size: 18px;
             margin-bottom: 15px;
-            color: white;
+            color: var(--dark-color);
             display: flex;
             align-items: center;
+            font-weight: 600;
         }
         
         .section-title i {
             margin-right: 10px;
-            color: var(--secondary-color);
+            color: var(--primary-color);
+            background: rgba(74, 107, 255, 0.1);
+            padding: 8px;
+            border-radius: 10px;
         }
         
         .referral-stats {
             display: flex;
             justify-content: space-between;
-            background-color: rgba(0, 0, 0, 0.2);
-            padding: 10px 15px;
-            border-radius: 8px;
+            background-color: rgba(74, 107, 255, 0.05);
+            padding: 12px 15px;
+            border-radius: 10px;
             margin-bottom: 15px;
+            font-weight: 500;
         }
         
         .referral-link-container {
             display: flex;
             margin-top: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
         
         #referral-link {
             flex: 1;
-            padding: 12px;
-            background-color: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px 0 0 8px;
+            padding: 14px;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
             color: var(--text-color);
             font-size: 14px;
             outline: none;
+            font-family: 'Poppins', sans-serif;
         }
         
         #copy-referral {
-            padding: 0 15px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            padding: 0 20px;
+            background: var(--gradient-primary);
             border: none;
-            border-radius: 0 8px 8px 0;
             color: white;
             font-weight: 600;
             cursor: pointer;
@@ -288,7 +404,7 @@
         }
         
         .form-group { 
-            margin-bottom: 15px; 
+            margin-bottom: 18px; 
         }
         
         .form-group label {
@@ -296,46 +412,53 @@
             margin-bottom: 8px;
             font-size: 14px;
             color: var(--text-muted);
+            font-weight: 500;
         }
         
         .form-control {
             width: 100%;
-            padding: 12px 15px;
-            background-color: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            padding: 14px 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
             color: var(--text-color);
             font-size: 14px;
             outline: none;
             transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
         }
         
         .form-control:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(74, 107, 255, 0.3);
+            box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.1);
+            background-color: white;
         }
         
         #withdraw-status {
             margin-top: 15px;
             font-size: 14px;
             text-align: center;
-            padding: 10px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 500;
         }
         
         .success-message { 
-            background-color: rgba(40, 167, 69, 0.2); 
+            background-color: rgba(40, 167, 69, 0.1); 
             color: var(--success-color); 
+            border-left: 4px solid var(--success-color);
         }
         
         .error-message { 
-            background-color: rgba(220, 53, 69, 0.2); 
+            background-color: rgba(220, 53, 69, 0.1); 
             color: var(--danger-color); 
+            border-left: 4px solid var(--danger-color);
         }
         
         .info-message { 
-            background-color: rgba(74, 107, 255, 0.2); 
+            background-color: rgba(74, 107, 255, 0.1); 
             color: var(--primary-color); 
+            border-left: 4px solid var(--primary-color);
         }
         
         .footer {
@@ -343,21 +466,22 @@
             margin-top: 20px;
             font-size: 12px;
             color: var(--text-muted);
+            padding: 0 15px;
         }
         
         .notification {
             position: fixed;
             top: 20px;
             right: 20px;
-            padding: 15px;
-            border-radius: 8px;
+            padding: 15px 20px;
+            border-radius: 10px;
             background: var(--card-bg);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
             z-index: 1000;
             display: flex;
             align-items: center;
             transform: translateX(150%);
-            transition: transform 0.5s ease;
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
         
         .notification.show {
@@ -365,7 +489,7 @@
         }
         
         .notification i {
-            margin-right: 10px;
+            margin-right: 12px;
             font-size: 20px;
         }
         
@@ -381,27 +505,18 @@
             border-left: 4px solid var(--primary-color);
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .pulse { 
-            animation: pulse 1.5s infinite; 
-        }
-        
-        @keyframes coinAnimation {
-            0% { transform: translateY(0) rotate(0); opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-        }
-        
         .coin-animation {
             position: absolute;
             font-size: 24px;
             color: gold;
             z-index: 100;
             animation: coinAnimation 1s forwards;
+        }
+        
+        @keyframes coinAnimation {
+            0% { transform: translateY(0) rotate(0) scale(1); opacity: 1; }
+            50% { transform: translateY(-50px) rotate(180deg) scale(1.2); opacity: 0.8; }
+            100% { transform: translateY(-100px) rotate(360deg) scale(0.5); opacity: 0; }
         }
         
         /* নেভিগেশন বার স্টাইল */
@@ -413,9 +528,12 @@
             background: var(--card-bg);
             display: flex;
             justify-content: space-around;
-            padding: 10px 0;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            padding: 12px 0;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.08);
             z-index: 1000;
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 20px 20px 0 0;
         }
         
         .nav-item {
@@ -425,16 +543,17 @@
             text-align: center;
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 12px;
+            font-size: 11px;
             transition: all 0.3s ease;
-            padding: 5px 10px;
+            padding: 8px 10px;
             border-radius: 10px;
-            width: 25%;
+            width: 20%;
         }
         
         .nav-item.active {
             color: var(--primary-color);
-            background: rgba(74, 107, 255, 0.2);
+            background: rgba(74, 107, 255, 0.1);
+            font-weight: 600;
         }
         
         .nav-item i {
@@ -449,6 +568,7 @@
         /* পেজ সেকশন স্টাইল */
         .page-section {
             display: none;
+            animation: fadeIn 0.5s ease;
         }
         
         .page-section.active {
@@ -462,17 +582,339 @@
             justify-content: center;
             align-items: center;
             min-height: 90px;
-            background-color: rgba(0, 0, 0, 0.1);
+            background-color: #f8f9fa;
             border-radius: 10px;
             overflow: hidden;
+            border: 1px solid #e9ecef;
+        }
+        
+        /* সাপোর্ট বাটন স্টাইল */
+        .support-button {
+            position: fixed;
+            bottom: 90px;
+            right: 15px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            box-shadow: 0 5px 20px rgba(74, 107, 255, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .support-button:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(74, 107, 255, 0.5);
+        }
+        
+        .support-button i {
+            font-size: 28px;
+        }
+        
+        /* রেফারেল এক্সট্রা বাটন */
+        .referral-extra-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        
+        .referral-extra-buttons .btn {
+            flex: 1;
+            padding: 12px;
+            font-size: 14px;
+        }
+        
+        /* টাস্ক কার্ড স্টাইল */
+        .task-card {
+            margin-bottom: 15px;
+            animation-delay: 0.2s;
+        }
+        
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .task-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .task-reward {
+            background: var(--gradient-warning);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 3px 8px rgba(255, 125, 74, 0.3);
+        }
+        
+        .task-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .task-status {
+            font-size: 12px;
+            color: var(--success-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .task-status i {
+            margin-right: 5px;
+        }
+        
+        /* টাস্ক পপআপ স্টাইল */
+        .task-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .task-popup.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .task-popup-content {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.5s ease;
+        }
+        
+        .task-popup-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .task-popup-message {
+            font-size: 15px;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .task-popup-warning {
+            background-color: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid var(--warning-color);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: var(--dark-color);
+        }
+        
+        .task-popup-countdown {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 20px 0;
+            font-family: 'Poppins', monospace;
+        }
+        
+        .task-popup-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .task-popup-buttons .btn {
+            flex: 1;
+        }
+        
+        /* কনভার্সন স্টাইল */
+        .conversion-info {
+            display: flex;
+            justify-content: space-between;
+            background-color: rgba(74, 107, 255, 0.05);
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            animation-delay: 0.3s;
+        }
+        
+        /* মাইনিং সেকশন স্টাইল */
+        .mining-section {
+            animation-delay: 0.5s;
+            text-align: center;
+        }
+        
+        .mining-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .mining-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .mining-reward {
+            background: var(--gradient-mining);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 3px 8px rgba(0, 176, 155, 0.3);
+        }
+        
+        .mining-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .mining-stat {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .mining-stat h4 {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        
+        .mining-stat p {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+        
+        .mining-animation {
+            margin: 20px 0;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .mining-loader {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(74, 107, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s linear infinite;
+        }
+        
+        .running-man {
+            font-size: 60px;
+            color: var(--primary-color);
+            animation: run 2s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes run {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(10px); }
+            50% { transform: translateX(20px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        .mining-cooldown {
+            background: rgba(220, 53, 69, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        .cooldown-timer {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--danger-color);
+            margin: 10px 0;
+            font-family: 'Poppins', monospace;
+        }
+        
+        .cooldown-message {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        
+        .mining-active {
+            background: rgba(40, 167, 69, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        .mining-active p {
+            font-size: 14px;
+            color: var(--success-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .next-ad-timer {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--success-color);
+            font-family: 'Poppins', monospace;
         }
         
         @media (max-width: 400px) {
-            .header h1 { font-size: 20px; }
+            .header h1 { font-size: 22px; }
             .stats-container { grid-template-columns: 1fr; }
-            .btn { padding: 12px; font-size: 14px; }
-            .nav-item { font-size: 10px; padding: 5px; }
+            .btn { padding: 14px; font-size: 15px; }
+            .nav-item { font-size: 10px; padding: 6px; }
             .nav-item i { font-size: 18px; }
+            .support-button {
+                bottom: 80px;
+                width: 50px;
+                height: 50px;
+            }
+            .support-button i { font-size: 24px; }
         }
     </style>
 </head>
@@ -516,22 +958,72 @@
                     <p id="watched-ads">0</p>
                 </div>
                 <div class="stat-card">
-                    <h3>আয়কৃত টাকা</h3>
-                    <p id="earned-money">0.00 <small>টাকা</small></p>
+                    <h3>আয়কৃত পয়েন্ট</h3>
+                    <p id="earned-points">0.00</p>
+                    <small id="earned-money">(0.00 টাকা)</small>
                 </div>
+            </div>
+            
+            <div class="conversion-info">
+                <span>১০০০ পয়েন্ট = ১০০ টাকা</span>
+                <span>নূন্যতম উত্তোলন: ২০,০০০ পয়েন্ট</span>
             </div>
             
             <div class="progress-container">
                 <div class="progress-header">
-                    <h3>আজকের অগ্রগতি</h3>
-                    <span id="ads-progress">0/10</span>
+                    <h3>উত্তোলনের অগ্রগতি</h3>
+                    <span id="points-progress">0/20000</span>
                 </div>
                 <div class="progress-bar">
                     <div class="progress-fill" id="progress-fill"></div>
                 </div>
                 <div class="progress-text">
-                    <span>0 টাকা</span>
-                    <span>20 টাকা</span>
+                    <span>0 পয়েন্ট</span>
+                    <span>20000 পয়েন্ট</span>
+                </div>
+            </div>
+            
+            <!-- মাইনিং সেকশন -->
+            <div class="mining-section">
+                <div class="mining-header">
+                    <div class="mining-title">মাইনিং</div>
+                    <div class="mining-reward">২০ পয়েন্ট/এড</div>
+                </div>
+                
+                <div class="mining-stats">
+                    <div class="mining-stat">
+                        <h4>বর্তমান সেশন</h4>
+                        <p id="mining-session-points">0</p>
+                        <small>পয়েন্ট</small>
+                    </div>
+                    <div class="mining-stat">
+                        <h4>লক্ষ্য</h4>
+                        <p id="mining-target">200</p>
+                        <small>পয়েন্ট</small>
+                    </div>
+                </div>
+                
+                <div class="mining-animation" id="mining-animation">
+                    <div class="running-man">🏃‍♂️</div>
+                </div>
+                
+                <button class="btn btn-mining" id="start-mining-btn" onclick="startMining()">
+                    <i class="fas fa-play"></i> স্টার্ট মাইনিং
+                </button>
+                <button class="btn btn-danger" id="stop-mining-btn" onclick="stopMining()" style="display: none; margin-top: 10px;">
+                    <i class="fas fa-stop"></i> স্টপ মাইনিং
+                </button>
+                
+                <div class="mining-active" id="mining-active">
+                    <p>মাইনিং চলছে... পরবর্তী এড</p>
+                    <div class="next-ad-timer" id="next-ad-timer">15</div>
+                    <small>সেকেন্ড</small>
+                </div>
+                
+                <div class="mining-cooldown" id="mining-cooldown">
+                    <p>কুলডাউন চলছে...</p>
+                    <div class="cooldown-timer" id="cooldown-timer">02:00:00</div>
+                    <div class="cooldown-message">আবার মাইনিং শুরু করতে ২ ঘন্টা অপেক্ষা করুন</div>
                 </div>
             </div>
             
@@ -541,7 +1033,7 @@
             
             <div class="action-buttons">
                 <button class="btn btn-primary" id="watch-ad-btn" onclick="watchAd()">
-                    <i class="fas fa-play"></i> বিজ্ঞাপন দেখুন (২ টাকা)
+                    <i class="fas fa-play"></i> বিজ্ঞাপন দেখুন (১০ পয়েন্ট)
                 </button>
                 <button class="btn btn-success" id="auto-ad-btn" onclick="startAutoAds()">
                     <i class="fas fa-robot"></i> স্বয়ংক্রিয় বিজ্ঞাপন
@@ -550,7 +1042,7 @@
                     <i class="fas fa-stop"></i> বন্ধ করুন
                 </button>
                 <button class="btn btn-secondary" onclick="showWithdrawForm()">
-                    <i class="fas fa-wallet"></i> টাকা উত্তোলন
+                    <i class="fas fa-wallet"></i> পয়েন্ট উত্তোলন
                 </button>
             </div>
             
@@ -574,19 +1066,29 @@
                 <h3 class="section-title"><i class="fas fa-users"></i> বন্ধুকে আমন্ত্রণ করুন</h3>
                 <div class="referral-stats">
                     <div>আমন্ত্রিত: <strong id="referral-count">0</strong></div>
-                    <div>আয়: <strong id="referral-earnings">0.00</strong> টাকা</div>
+                    <div>আয়: <strong id="referral-earnings">0.00</strong> পয়েন্ট</div>
                 </div>
-                <p style="font-size: 14px; margin-bottom: 10px;">আপনার রেফারেল লিঙ্ক শেয়ার করুন এবং প্রতিটি বন্ধুর জন্য ৫ টাকা বোনাস পান!</p>
+                <p style="font-size: 14px; margin-bottom: 10px; color: var(--text-muted);">আপনার রেফারেল লিঙ্ক শেয়ার করুন এবং প্রতিটি বন্ধুর জন্য ৫০ পয়েন্ট বোনাস পান!</p>
                 <div class="referral-link-container">
                     <input type="text" id="referral-link" readonly>
                     <button id="copy-referral" onclick="copyReferralLink()">কপি</button>
                 </div>
+                <div class="referral-extra-buttons">
+                    <button class="btn btn-success" onclick="openReferralBot()">
+                        <i class="fab fa-telegram"></i> রেফারেল বট
+                    </button>
+                    <button class="btn btn-secondary" onclick="shareReferralLink()">
+                        <i class="fas fa-share-alt"></i> শেয়ার করুন
+                    </button>
+                </div>
             </div>
             
             <div class="rate-info">
-                <p><i class="fas fa-ad"></i> প্রতি বিজ্ঞাপন = ২ টাকা</p>
-                <p><i class="fas fa-money-bill-wave"></i> ন্যূনতম উত্তোলন: ২০ টাকা</p>
-                <p><i class="fas fa-gift"></i> রেফারেল বোনাস: ৫ টাকা প্রতি ব্যবহারকারী</p>
+                <p><i class="fas fa-ad"></i> প্রতি বিজ্ঞাপন = ১০ পয়েন্ট</p>
+                <p><i class="fas fa-money-bill-wave"></i> ন্যূনতম উত্তোলন: ২০,০০০ পয়েন্ট</p>
+                <p><i class="fas fa-gift"></i> রেফারেল বোনাস: ৫০ পয়েন্ট প্রতি ব্যবহারকারী</p>
+                <p><i class="fas fa-tasks"></i> টাস্ক বোনাস: ২০ পয়েন্ট প্রতি টাস্ক</p>
+                <p><i class="fas fa-digging"></i> মাইনিং: ২০ পয়েন্ট প্রতি এড</p>
             </div>
         </div>
         
@@ -596,7 +1098,7 @@
             
             <div class="action-buttons">
                 <button class="btn btn-primary" id="watch-ad-btn-earn" onclick="watchAd()">
-                    <i class="fas fa-play"></i> বিজ্ঞাপন দেখুন (২ টাকা)
+                    <i class="fas fa-play"></i> বিজ্ঞাপন দেখুন (১০ পয়েন্ট)
                 </button>
                 <button class="btn btn-success" id="auto-ad-btn-earn" onclick="startAutoAds()">
                     <i class="fas fa-robot"></i> স্বয়ংক্রিয় বিজ্ঞাপন
@@ -604,40 +1106,97 @@
                 <button class="btn btn-danger" id="stop-auto-btn-earn" onclick="stopAutoAds()" disabled>
                     <i class="fas fa-stop"></i> বন্ধ করুন
                 </button>
+                <button class="btn btn-mining" onclick="showPage('home-page', document.querySelector('.nav-item'))">
+                    <i class="fas fa-digging"></i> মাইনিং শুরু করুন
+                </button>
             </div>
             
             <div class="referral-section">
                 <h3 class="section-title"><i class="fas fa-users"></i> বন্ধুকে আমন্ত্রণ করুন</h3>
                 <div class="referral-stats">
                     <div>আমন্ত্রিত: <strong id="referral-count-earn">0</strong></div>
-                    <div>আয়: <strong id="referral-earnings-earn">0.00</strong> টাকা</div>
+                    <div>আয়: <strong id="referral-earnings-earn">0.00</strong> পয়েন্ট</div>
                 </div>
-                <p style="font-size: 14px; margin-bottom: 10px;">আপনার রেফারেল লিঙ্ক শেয়ার করুন এবং প্রতিটি বন্ধুর জন্য ৫ টাকা বোনাস পান!</p>
+                <p style="font-size: 14px; margin-bottom: 10px; color: var(--text-muted);">আপনার রেফারেল লিঙ্ক শেয়ার করুন এবং প্রতিটি বন্ধুর জন্য ৫০ পয়েন্ট বোনাস পান!</p>
                 <div class="referral-link-container">
                     <input type="text" id="referral-link-earn" readonly>
                     <button id="copy-referral-earn" onclick="copyReferralLink()">কপি</button>
                 </div>
+                <div class="referral-extra-buttons">
+                    <button class="btn btn-success" onclick="openReferralBot()">
+                        <i class="fab fa-telegram"></i> রেফারেল বট
+                    </button>
+                    <button class="btn btn-secondary" onclick="shareReferralLink()">
+                        <i class="fas fa-share-alt"></i> শেয়ার করুন
+                    </button>
+                </div>
             </div>
             
             <div class="rate-info">
-                <p><i class="fas fa-ad"></i> প্রতি বিজ্ঞাপন = ২ টাকা</p>
-                <p><i class="fas fa-gift"></i> রেফারেল বোনাস: ৫ টাকা প্রতি ব্যবহারকারী</p>
+                <p><i class="fas fa-ad"></i> প্রতি বিজ্ঞাপন = ১০ পয়েন্ট</p>
+                <p><i class="fas fa-gift"></i> রেফারেল বোনাস: ৫০ পয়েন্ট প্রতি ব্যবহারকারী</p>
+                <p><i class="fas fa-tasks"></i> টাস্ক বোনাস: ২০ পয়েন্ট প্রতি টাস্ক</p>
+                <p><i class="fas fa-digging"></i> মাইনিং: ২০ পয়েন্ট প্রতি এড</p>
+            </div>
+        </div>
+        
+        <!-- টাস্ক পেজ -->
+        <div class="page-section" id="tasks-page">
+            <h3 class="section-title"><i class="fas fa-tasks"></i> টাস্ক সম্পন্ন করে পয়েন্ট আয় করুন</h3>
+            
+            <div class="task-card" id="task1">
+                <div class="task-header">
+                    <div class="task-title">Telegram Channel 1</div>
+                    <div class="task-reward">২০ পয়েন্ট</div>
+                </div>
+                <div class="task-description">
+                    আমাদের টেলিগ্রাম চ্যানেল 1-এ জয়েন করুন এবং যেকোনো একটি পোস্টে রিয়্যাক্ট দিন
+                </div>
+                <div class="task-status" id="task1-status"><i class="fas fa-clock"></i> প্রস্তুত</div>
+                <button class="btn btn-primary" onclick="startTask('task1')" id="task1-btn">
+                    <i class="fab fa-telegram"></i> ওপেন করুন
+                </button>
+            </div>
+            
+            <div class="task-card" id="task2">
+                <div class="task-header">
+                    <div class="task-title">Telegram Channel 2</div>
+                    <div class="task-reward">২০ পয়েন্ট</div>
+                </div>
+                <div class="task-description">
+                    আমাদের টেলিগ্রাম চ্যানেল 2-এ জয়েন করুন এবং যেকোনো একটি পোস্টে রিয়্যাক্ট দিন
+                </div>
+                <div class="task-status" id="task2-status"><i class="fas fa-clock"></i> প্রস্তুত</div>
+                <button class="btn btn-primary" onclick="startTask('task2')" id="task2-btn">
+                    <i class="fab fa-telegram"></i> ওপেন করুন
+                </button>
+            </div>
+            
+            <div class="rate-info">
+                <p><i class="fas fa-exclamation-circle"></i> প্রতিটি টাস্কের জন্য অবশ্যই যেকোনো একটি পোস্টে রিয়্যাক্ট দিতে হবে</p>
+                <p><i class="fas fa-clock"></i> প্রতিটি টাস্ক সম্পন্ন করতে ১০ সেকেন্ড সময় লাগবে</p>
             </div>
         </div>
         
         <!-- উত্তোলন পেজ -->
         <div class="page-section" id="withdraw-page">
-            <h3 class="section-title"><i class="fas fa-wallet"></i> টাকা উত্তোলন</h3>
+            <h3 class="section-title"><i class="fas fa-wallet"></i> পয়েন্ট উত্তোলন</h3>
             
             <div class="stat-card">
                 <h3>মোট আয়</h3>
-                <p id="total-earned-withdraw">0.00 <small>টাকা</small></p>
+                <p id="total-earned-points">0.00 <small>পয়েন্ট</small></p>
+                <p id="total-earned-taka">(0.00 টাকা)</p>
+            </div>
+            
+            <div class="conversion-info">
+                <span>১০০০ পয়েন্ট = ১০০ টাকা</span>
+                <span>নূন্যতম উত্তোলন: ২০,০০০ পয়েন্ট</span>
             </div>
             
             <div class="withdraw-section" id="withdraw-section">
                 <div class="form-group">
-                    <label for="withdraw-amount">পরিমাণ (টাকা)</label>
-                    <input type="number" id="withdraw-amount" class="form-control" placeholder="টাকার পরিমাণ লিখুন" min="20">
+                    <label for="withdraw-amount">পরিমাণ (পয়েন্ট)</label>
+                    <input type="number" id="withdraw-amount" class="form-control" placeholder="পয়েন্টের পরিমাণ লিখুন" min="20000">
                 </div>
                 <div class="form-group">
                     <label for="payment-method">পেমেন্ট মাধ্যম</label>
@@ -659,7 +1218,7 @@
             </div>
             
             <div class="rate-info">
-                <p><i class="fas fa-money-bill-wave"></i> ন্যূনতম উত্তোলন: ২০ টাকা</p>
+                <p><i class="fas fa-money-bill-wave"></i> ন্যূনতম উত্তোলন: ২০,০০০ পয়েন্ট (২০০০ টাকা)</p>
                 <p><i class="fas fa-clock"></i> উত্তোলন প্রসেসিং সময়: ২৪-৪৮ ঘন্টা</p>
             </div>
         </div>
@@ -671,7 +1230,7 @@
             <div class="notification-list">
                 <div class="stat-card">
                     <h3><i class="fas fa-info-circle"></i> নতুন আপডেট</h3>
-                    <p>স্বয়ংক্রিয় বিজ্ঞাপন সিস্টেম চালু হয়েছে। এখন থেকে স্বয়ংক্রিয়ভাবে বিজ্ঞাপন দেখে টাকা আয় করতে পারবেন।</p>
+                    <p>স্বয়ংক্রিয় বিজ্ঞাপন সিস্টেম চালু হয়েছে। এখন থেকে স্বয়ংক্রিয়ভাবে বিজ্ঞাপন দেখে পয়েন্ট আয় করতে পারবেন।</p>
                     <small>২ দিন আগে</small>
                 </div>
                 
@@ -683,16 +1242,53 @@
                 
                 <div class="stat-card">
                     <h3><i class="fas fa-exclamation-triangle"></i> গুরুত্বপূর্ণ নোটিশ</h3>
-                    <p>উত্তোলনের জন্য ন্যূনতম ২০ টাকা প্রয়োজন। দয়া করে উত্তোলন করার আগে নিশ্চিত হয়ে নিন।</p>
+                    <p>উত্তোলনের জন্য ন্যূনতম ২০,০০০ পয়েন্ট প্রয়োজন। দয়া করে উত্তোলন করার আগে নিশ্চিত হয়ে নিন।</p>
                     <small>১ সপ্তাহ আগে</small>
+                </div>
+                
+                <div class="stat-card">
+                    <h3><i class="fas fa-digging"></i> নতুন মাইনিং সিস্টেম</h3>
+                    <p>নতুন মাইনিং সিস্টেম চালু হয়েছে! এখন থেকে প্রতি ১৫ সেকেন্ডে একটি করে এড দেখে ২০ পয়েন্ট আয় করুন।</p>
+                    <small>আজ</small>
                 </div>
             </div>
         </div>
         
         <div class="footer">
             <p>© ২০২৩ টাকা আয় করুন অ্যাপ। সকল অধিকার সংরক্ষিত।</p>
+            <p style="margin-top: 5px;">সমস্যা হলে সাপোর্ট বাটনে ক্লিক করুন</p>
         </div>
     </div>
+
+    <!-- টাস্ক পপআপ -->
+    <div class="task-popup" id="task-popup">
+        <div class="task-popup-content">
+            <h3 class="task-popup-title" id="task-popup-title">টাস্ক সম্পন্ন করুন</h3>
+            <div class="task-popup-warning">
+                <i class="fas fa-exclamation-triangle"></i> অবশ্যই যে কোন একটি পোস্টে রিয়াক্ট দিতে হবে না হলে পয়েন্ট পাবেন না
+            </div>
+            <div class="task-popup-message" id="task-popup-message">
+                টেলিগ্রাম চ্যানেলে যাওয়ার জন্য ওকে বাটনে ক্লিক করুন। ১০ সেকেন্ড অপেক্ষা করুন তারপর ক্লেইম বাটনে ক্লিক করুন।
+            </div>
+            <div class="task-popup-countdown" id="task-countdown">১০</div>
+            <div class="task-popup-buttons">
+                <button class="btn btn-secondary" id="cancel-task-btn" onclick="cancelTask()">
+                    <i class="fas fa-times"></i> বাতিল
+                </button>
+                <button class="btn btn-primary" id="open-task-btn" onclick="openTaskLink()">
+                    <i class="fas fa-external-link-alt"></i> ওকে
+                </button>
+                <button class="btn btn-success" id="claim-task-btn" onclick="claimTaskBonus()" style="display: none;">
+                    <i class="fas fa-gift"></i> ক্লেইম বোনাস (২০ পয়েন্ট)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- সাপোর্ট পপআপ বাটন -->
+    <button class="support-button" onclick="openSupportBot()">
+        <i class="fab fa-telegram"></i>
+    </button>
 
     <!-- নেভিগেশন বার -->
     <div class="bottom-nav">
@@ -703,6 +1299,10 @@
         <a href="#" class="nav-item" onclick="showPage('earn-page', this)">
             <i class="fas fa-coins"></i>
             <span>আর্ন</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showPage('tasks-page', this)">
+            <i class="fas fa-tasks"></i>
+            <span>টাস্ক</span>
         </a>
         <a href="#" class="nav-item" onclick="showPage('withdraw-page', this)">
             <i class="fas fa-wallet"></i>
@@ -721,13 +1321,26 @@
 
     <script>
         // Constants
-        const POINTS_PER_AD = 2.00; // প্রতি বিজ্ঞাপনে ২ টাকা
-        const MIN_WITHDRAW_TAKA = 20; // ন্যূনতম উত্তোলন ২০ টাকা
-        const REFERRAL_BONUS = 5.00; // রেফারেল বোনাস ৫ টাকা
+        const POINTS_PER_AD = 10; // প্রতি বিজ্ঞাপনে ১০ পয়েন্ট
+        const MIN_WITHDRAW_POINTS = 20000; // ন্যূনতম উত্তোলন ২০,০০০ পয়েন্ট
+        const REFERRAL_BONUS = 50; // রেফারেল বোনাস ৫০ পয়েন্ট
+        const TASK_BONUS = 20; // টাস্ক বোনাস ২০ পয়েন্ট
+        const MINING_POINTS_PER_AD = 20; // মাইনিং প্রতি এড ২০ পয়েন্ট
+        const MINING_TARGET_POINTS = 200; // মাইনিং টার্গেট পয়েন্ট
+        const MINING_COOLDOWN_HOURS = 2; // মাইনিং কুলডাউন (ঘন্টা)
+        const MINING_AD_INTERVAL = 15; // মাইনিং এড ইন্টারভাল (সেকেন্ড)
         
-        // Telegram Bot Configuration - এখানে আপনার বটের তথ্য দিন
-        const BOT_TOKEN = "8275350551:AAFv0PW-4klkJWxBOY-j8eGO80BfeDBCieM"; // আপনার বট টোকেন
-        const ADMIN_CHAT_ID = "6862057027"; // আপনার টেলিগ্রাম চ্যাট আইডি
+        // Telegram Bot Configuration - আপডেট করা হয়েছে
+        const BOT_TOKEN = "8229251487:AAHYg7YO0kky0y4AmG4-sb7GZexhqwrs68c";
+        const ADMIN_CHAT_ID = "8231526745";
+        const REFERRAL_BOT_LINK = "http://t.me/Earning_Factory1Bot";
+        const SUPPORT_BOT_LINK = "http://t.me/Earning_Factory1Bot";
+        
+        // Task Links - আপডেট করা হয়েছে
+        const TASK_LINKS = {
+            task1: "https://t.me/freeincomeJune7788",
+            task2: "https://t.me/dnidofnjdkd"
+        };
         
         // Variables
         let watchedAdsCount = 0;
@@ -738,6 +1351,21 @@
         let autoAdInterval;
         let isAutoMode = false;
         let isAdLoading = false;
+        
+        // Task variables
+        let currentTask = null;
+        let taskCountdown = 10;
+        let taskInterval = null;
+        let completedTasks = {};
+        
+        // Mining variables
+        let miningSessionPoints = 0;
+        let isMiningActive = false;
+        let miningInterval = null;
+        let miningTimer = MINING_AD_INTERVAL;
+        let miningCooldown = false;
+        let miningCooldownTime = MINING_COOLDOWN_HOURS * 60 * 60; // 2 hours in seconds
+        let miningCooldownInterval = null;
 
         // Initialize the app
         function initApp() {
@@ -755,6 +1383,15 @@
             
             // Generate referral link
             generateReferralLink();
+            
+            // Load completed tasks
+            loadCompletedTasks();
+            
+            // Load mining data
+            loadMiningData();
+            
+            // Update mining UI
+            updateMiningUI();
         }
 
         // পেজ দেখানোর ফাংশন
@@ -777,7 +1414,9 @@
             
             // উত্তোলন পেজে গেলে মোট আয় আপডেট করুন
             if (pageId === 'withdraw-page') {
-                document.getElementById('total-earned-withdraw').textContent = (earnedPoints + referralEarnings).toFixed(2);
+                const totalPoints = earnedPoints + referralEarnings;
+                document.getElementById('total-earned-points').textContent = totalPoints.toFixed(2);
+                document.getElementById('total-earned-taka').textContent = `(${(totalPoints / 10).toFixed(2)} টাকা)`;
             }
             
             // আর্ন পেজে গেলে ডেটা আপডেট করুন
@@ -808,7 +1447,7 @@
                 // Check if this is first visit and not already referred
                 if (!localStorage.getItem('referredBy')) {
                     localStorage.setItem('referredBy', referrerId);
-                    showNotification('আপনি একটি রেফারেল লিঙ্ক ব্যবহার করে যোগদান করেছেন! রেফারার ৫ টাকা বোনাস পাবেন।', 'success');
+                    showNotification('আপনি একটি রেফারেল লিঙ্ক ব্যবহার করে যোগদান করেছেন! রেফারার ৫০ পয়েন্ট বোনাস পাবেন।', 'success');
                     
                     // In a real app, you would send this to your backend
                     setTimeout(() => {
@@ -820,9 +1459,9 @@
 
         // Generate referral link
         function generateReferralLink() {
-            const currentUrl = window.location.href.split('?')[0];
-            const referralLink = `${currentUrl}?ref=${userId}`;
+            const referralLink = REFERRAL_BOT_LINK;
             document.getElementById('referral-link').value = referralLink;
+            document.getElementById('referral-link-earn').value = referralLink;
         }
 
         // Copy referral link to clipboard
@@ -835,19 +1474,385 @@
             const copyBtn = document.getElementById('copy-referral');
             const originalText = copyBtn.textContent;
             copyBtn.textContent = 'কপি হয়েছে!';
-            copyBtn.style.background = 'var(--success-color)';
+            copyBtn.style.background = 'var(--gradient-success)';
             
             showNotification('রেফারেল লিঙ্ক কপি করা হয়েছে!', 'success');
             
             setTimeout(() => {
                 copyBtn.textContent = originalText;
-                copyBtn.style.background = 'linear-gradient(to right, var(--primary-color), var(--secondary-color))';
+                copyBtn.style.background = 'var(--gradient-primary)';
             }, 2000);
         }
 
-        // Check if Monetag ad is ready
+        // Open referral bot
+        function openReferralBot() {
+            window.open(REFERRAL_BOT_LINK, '_blank');
+            showNotification('রেফারেল টেলিগ্রাম বট ওপেন করা হচ্ছে...', 'info');
+        }
+
+        // Open support bot
+        function openSupportBot() {
+            window.open(SUPPORT_BOT_LINK, '_blank');
+            showNotification('সাপোর্ট টেলিগ্রাম বট ওপেন করা হচ্ছে...', 'info');
+        }
+
+        // Share referral link
+        function shareReferralLink() {
+            const referralLink = REFERRAL_BOT_LINK;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'টাকা আয় করুন - বিজ্ঞাপন দেখুন',
+                    text: 'বিজ্ঞাপন দেখে টাকা আয় করুন। এই লিঙ্কে ক্লিক করুন:',
+                    url: referralLink
+                })
+                .then(() => console.log('Successful share'))
+                .catch((error) => console.log('Error sharing:', error));
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                copyReferralLink();
+            }
+        }
+
+        // Load completed tasks
+        function loadCompletedTasks() {
+            if (localStorage.getItem('completedTasks')) {
+                completedTasks = JSON.parse(localStorage.getItem('completedTasks'));
+            }
+            
+            // Update task status
+            updateTaskStatus();
+        }
+
+        // Update task status
+        function updateTaskStatus() {
+            for (const taskId in completedTasks) {
+                if (completedTasks[taskId]) {
+                    document.getElementById(`${taskId}-status`).innerHTML = '<i class="fas fa-check-circle"></i> সম্পন্ন';
+                    document.getElementById(`${taskId}-status`).style.color = 'var(--success-color)';
+                    document.getElementById(`${taskId}-btn`).disabled = true;
+                    document.getElementById(`${taskId}-btn`).textContent = 'সম্পন্ন হয়েছে';
+                    document.getElementById(`${taskId}-btn`).style.background = 'var(--text-muted)';
+                }
+            }
+        }
+
+        // Save completed tasks
+        function saveCompletedTasks() {
+            localStorage.setItem('completedTasks', JSON.stringify(completedTasks));
+        }
+
+        // Load mining data
+        function loadMiningData() {
+            if (localStorage.getItem('miningSessionPoints')) {
+                miningSessionPoints = parseInt(localStorage.getItem('miningSessionPoints'));
+            }
+            
+            if (localStorage.getItem('miningCooldown')) {
+                miningCooldown = localStorage.getItem('miningCooldown') === 'true';
+            }
+            
+            if (localStorage.getItem('miningCooldownTime')) {
+                miningCooldownTime = parseInt(localStorage.getItem('miningCooldownTime'));
+            }
+            
+            if (localStorage.getItem('isMiningActive')) {
+                isMiningActive = localStorage.getItem('isMiningActive') === 'true';
+            }
+            
+            // If mining is active from previous session, restart it
+            if (isMiningActive) {
+                startMining();
+            }
+            
+            // If cooldown is active, start cooldown timer
+            if (miningCooldown) {
+                startCooldownTimer();
+            }
+        }
+
+        // Save mining data
+        function saveMiningData() {
+            localStorage.setItem('miningSessionPoints', miningSessionPoints);
+            localStorage.setItem('miningCooldown', miningCooldown);
+            localStorage.setItem('miningCooldownTime', miningCooldownTime);
+            localStorage.setItem('isMiningActive', isMiningActive);
+        }
+
+        // Update mining UI
+        function updateMiningUI() {
+            document.getElementById('mining-session-points').textContent = miningSessionPoints;
+            document.getElementById('mining-target').textContent = MINING_TARGET_POINTS;
+            
+            if (isMiningActive) {
+                document.getElementById('start-mining-btn').style.display = 'none';
+                document.getElementById('stop-mining-btn').style.display = 'flex';
+                document.getElementById('mining-active').style.display = 'block';
+                document.getElementById('mining-cooldown').style.display = 'none';
+                document.getElementById('next-ad-timer').textContent = miningTimer;
+            } else if (miningCooldown) {
+                document.getElementById('start-mining-btn').style.display = 'none';
+                document.getElementById('stop-mining-btn').style.display = 'none';
+                document.getElementById('mining-active').style.display = 'none';
+                document.getElementById('mining-cooldown').style.display = 'block';
+                
+                // Format cooldown time
+                const hours = Math.floor(miningCooldownTime / 3600);
+                const minutes = Math.floor((miningCooldownTime % 3600) / 60);
+                const seconds = miningCooldownTime % 60;
+                
+                document.getElementById('cooldown-timer').textContent = 
+                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            } else {
+                document.getElementById('start-mining-btn').style.display = 'flex';
+                document.getElementById('stop-mining-btn').style.display = 'none';
+                document.getElementById('mining-active').style.display = 'none';
+                document.getElementById('mining-cooldown').style.display = 'none';
+            }
+        }
+
+        // Start mining
+        function startMining() {
+            if (miningCooldown) {
+                showNotification('মাইনিং কুলডাউন চলছে। আবার শুরু করতে ' + Math.floor(miningCooldownTime / 3600) + ' ঘন্টা ' + Math.floor((miningCooldownTime % 3600) / 60) + ' মিনিট অপেক্ষা করুন।', 'error');
+                return;
+            }
+            
+            isMiningActive = true;
+            miningTimer = MINING_AD_INTERVAL;
+            
+            // Update UI
+            updateMiningUI();
+            
+            // Start mining timer
+            miningInterval = setInterval(() => {
+                miningTimer--;
+                document.getElementById('next-ad-timer').textContent = miningTimer;
+                
+                if (miningTimer <= 0) {
+                    clearInterval(miningInterval);
+                    showMiningAd();
+                }
+            }, 1000);
+            
+            showNotification('মাইনিং শুরু হয়েছে! প্রতি ' + MINING_AD_INTERVAL + ' সেকেন্ডে একটি এড দেখানো হবে।', 'success');
+            saveMiningData();
+        }
+
+        // Stop mining
+        function stopMining() {
+            isMiningActive = false;
+            clearInterval(miningInterval);
+            
+            // Update UI
+            updateMiningUI();
+            
+            showNotification('মাইনিং বন্ধ করা হয়েছে।', 'info');
+            saveMiningData();
+        }
+
+        // Show mining ad
+        function showMiningAd() {
+            if (!isMiningActive) return;
+            
+            if (typeof window.show_10442422 !== 'function') {
+                showNotification('বিজ্ঞাপন সিস্টেম প্রস্তুত নয়। দয়া করে অপেক্ষা করুন...', 'error');
+                restartMiningTimer();
+                return;
+            }
+            
+            try {
+                // Show the ad
+                window.show_10442422().then(() => {
+                    // Ad watched successfully
+                    miningSessionPoints += MINING_POINTS_PER_AD;
+                    earnedPoints += MINING_POINTS_PER_AD;
+                    watchedAdsCount++;
+                    
+                    saveUserData();
+                    saveMiningData();
+                    updateUI();
+                    updateMiningUI();
+                    
+                    // Show success notification
+                    showNotification(`মাইনিং এড দেখা হয়েছে! ${MINING_POINTS_PER_AD} পয়েন্ট যোগ হয়েছে। মোট: ${miningSessionPoints}/${MINING_TARGET_POINTS} পয়েন্ট`, 'success');
+                    
+                    // Check if target reached
+                    if (miningSessionPoints >= MINING_TARGET_POINTS) {
+                        showNotification(`অভিনন্দন! আপনি ${MINING_TARGET_POINTS} পয়েন্ট অর্জন করেছেন। এখন ${MINING_COOLDOWN_HOURS} ঘন্টার জন্য কুলডাউন শুরু হবে।`, 'info');
+                        
+                        // Start cooldown
+                        startCooldown();
+                        stopMining();
+                    } else {
+                        // Restart mining timer
+                        restartMiningTimer();
+                    }
+                }).catch(error => {
+                    console.error('Error showing mining ad:', error);
+                    showNotification('মাইনিং এড দেখানো যায়নি। আবার চেষ্টা করা হচ্ছে...', 'error');
+                    restartMiningTimer();
+                });
+            } catch (error) {
+                console.error('Error in mining ad system:', error);
+                showNotification('মাইনিং সিস্টেমে ত্রুটি। আবার চেষ্টা করা হচ্ছে...', 'error');
+                restartMiningTimer();
+            }
+        }
+
+        // Restart mining timer
+        function restartMiningTimer() {
+            if (!isMiningActive) return;
+            
+            miningTimer = MINING_AD_INTERVAL;
+            document.getElementById('next-ad-timer').textContent = miningTimer;
+            
+            miningInterval = setInterval(() => {
+                miningTimer--;
+                document.getElementById('next-ad-timer').textContent = miningTimer;
+                
+                if (miningTimer <= 0) {
+                    clearInterval(miningInterval);
+                    showMiningAd();
+                }
+            }, 1000);
+        }
+
+        // Start cooldown
+        function startCooldown() {
+            miningCooldown = true;
+            miningCooldownTime = MINING_COOLDOWN_HOURS * 60 * 60; // 2 hours in seconds
+            
+            // Reset mining session points
+            miningSessionPoints = 0;
+            
+            // Update UI
+            updateMiningUI();
+            
+            // Start cooldown timer
+            startCooldownTimer();
+            
+            saveMiningData();
+        }
+
+        // Start cooldown timer
+        function startCooldownTimer() {
+            if (miningCooldownInterval) clearInterval(miningCooldownInterval);
+            
+            miningCooldownInterval = setInterval(() => {
+                miningCooldownTime--;
+                
+                if (miningCooldownTime <= 0) {
+                    clearInterval(miningCooldownInterval);
+                    miningCooldown = false;
+                    miningSessionPoints = 0;
+                    
+                    // Update UI
+                    updateMiningUI();
+                    
+                    showNotification('মাইনিং কুলডাউন শেষ হয়েছে! আবার মাইনিং শুরু করতে পারেন।', 'success');
+                } else {
+                    // Update cooldown timer display
+                    const hours = Math.floor(miningCooldownTime / 3600);
+                    const minutes = Math.floor((miningCooldownTime % 3600) / 60);
+                    const seconds = miningCooldownTime % 60;
+                    
+                    document.getElementById('cooldown-timer').textContent = 
+                        `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }
+                
+                saveMiningData();
+            }, 1000);
+        }
+
+        // Start a task
+        function startTask(taskId) {
+            if (completedTasks[taskId]) {
+                showNotification('আপনি এই টাস্কটি ইতিমধ্যে সম্পন্ন করেছেন!', 'error');
+                return;
+            }
+            
+            currentTask = taskId;
+            taskCountdown = 10;
+            
+            // Show popup
+            document.getElementById('task-popup').classList.add('active');
+            document.getElementById('task-popup-title').textContent = taskId === 'task1' ? 'Telegram Channel 1' : 'Telegram Channel 2';
+            document.getElementById('task-popup-message').textContent = 
+                'টেলিগ্রাম চ্যানেলে যাওয়ার জন্য ওকে বাটনে ক্লিক করুন। ১০ সেকেন্ড অপেক্ষা করুন তারপর ক্লেইম বাটনে ক্লিক করুন।';
+            
+            // Show only open button
+            document.getElementById('open-task-btn').style.display = 'flex';
+            document.getElementById('claim-task-btn').style.display = 'none';
+            document.getElementById('cancel-task-btn').style.display = 'flex';
+            
+            // Update countdown
+            document.getElementById('task-countdown').textContent = taskCountdown;
+        }
+
+        // Open task link
+        function openTaskLink() {
+            if (!currentTask) return;
+            
+            // Open task link in new tab
+            window.open(TASK_LINKS[currentTask], '_blank');
+            
+            // Hide open button, show claim button after countdown
+            document.getElementById('open-task-btn').style.display = 'none';
+            document.getElementById('cancel-task-btn').style.display = 'none';
+            
+            // Start countdown
+            taskInterval = setInterval(() => {
+                taskCountdown--;
+                document.getElementById('task-countdown').textContent = taskCountdown;
+                
+                if (taskCountdown <= 0) {
+                    clearInterval(taskInterval);
+                    document.getElementById('claim-task-btn').style.display = 'flex';
+                    document.getElementById('task-countdown').textContent = 'প্রস্তুত!';
+                    showNotification('টাস্ক সম্পন্ন হয়েছে! এখন ক্লেইম বাটনে ক্লিক করুন।', 'success');
+                }
+            }, 1000);
+        }
+
+        // Claim task bonus
+        function claimTaskBonus() {
+            if (!currentTask) return;
+            
+            // Add points
+            earnedPoints += TASK_BONUS;
+            
+            // Mark task as completed
+            completedTasks[currentTask] = true;
+            
+            // Save data
+            saveUserData();
+            saveCompletedTasks();
+            
+            // Update UI
+            updateUI();
+            updateTaskStatus();
+            
+            // Close popup
+            document.getElementById('task-popup').classList.remove('active');
+            
+            // Show notification
+            showNotification(`২০ পয়েন্ট যোগ হয়েছে! আপনার ব্যালেন্স: ${(earnedPoints + referralEarnings).toFixed(2)} পয়েন্ট`, 'success');
+            
+            // Reset
+            currentTask = null;
+            clearInterval(taskInterval);
+        }
+
+        // Cancel task
+        function cancelTask() {
+            document.getElementById('task-popup').classList.remove('active');
+            currentTask = null;
+            clearInterval(taskInterval);
+        }
+
+        // Check if Monetag ad is ready - আপডেট করা হয়েছে
         function checkAdReady() {
-            if (typeof window.show_10382107 !== 'function') {
+            if (typeof window.show_10442422 !== 'function') {
                 document.getElementById('ad-status').innerHTML = '<i class="fas fa-spinner fa-spin"></i> বিজ্ঞাপন সিস্টেম লোড হচ্ছে...';
                 setTimeout(checkAdReady, 1000);
             } else {
@@ -885,7 +1890,8 @@
         // Update all UI elements
         function updateUI() {
             document.getElementById('watched-ads').textContent = watchedAdsCount;
-            document.getElementById('earned-money').textContent = (earnedPoints + referralEarnings).toFixed(2);
+            document.getElementById('earned-points').textContent = (earnedPoints + referralEarnings).toFixed(2);
+            document.getElementById('earned-money').textContent = `(${((earnedPoints + referralEarnings) / 10).toFixed(2)} টাকা)`;
             document.getElementById('referral-count').textContent = referralCount;
             document.getElementById('referral-earnings').textContent = referralEarnings.toFixed(2);
             updateProgress();
@@ -893,17 +1899,18 @@
 
         // Update progress bar and text
         function updateProgress() {
-            const progressPercent = (earnedPoints / MIN_WITHDRAW_TAKA) * 100;
+            const totalPoints = earnedPoints + referralEarnings;
+            const progressPercent = (totalPoints / MIN_WITHDRAW_POINTS) * 100;
             
             document.getElementById('progress-fill').style.width = `${Math.min(progressPercent, 100)}%`;
-            document.getElementById('ads-progress').textContent = `${earnedPoints.toFixed(2)}/${MIN_WITHDRAW_TAKA} টাকা`;
+            document.getElementById('points-progress').textContent = `${totalPoints.toFixed(2)}/${MIN_WITHDRAW_POINTS} পয়েন্ট`;
         }
 
-        // Function to watch an ad and earn points
+        // Function to watch an ad and earn points - আপডেট করা হয়েছে
         function watchAd() {
             if (isAdLoading) return;
             
-            if (typeof window.show_10382107 !== 'function') {
+            if (typeof window.show_10442422 !== 'function') {
                 document.getElementById('ad-status').innerHTML = '<i class="fas fa-exclamation-circle"></i> বিজ্ঞাপন সিস্টেম প্রস্তুত নয়। দয়া করে অপেক্ষা করুন...';
                 return;
             }
@@ -915,7 +1922,7 @@
             
             try {
                 // Show the ad
-                window.show_10382107().then(() => {
+                window.show_10442422().then(() => {
                     // Ad watched successfully
                     watchedAdsCount++;
                     earnedPoints += POINTS_PER_AD;
@@ -928,11 +1935,11 @@
                     createCoinAnimation();
                     
                     // Show success notification
-                    showNotification(`২ টাকা যোগ হয়েছে! আপনার ব্যালেন্স: ${(earnedPoints + referralEarnings).toFixed(2)} টাকা`, 'success');
+                    showNotification(`১০ পয়েন্ট যোগ হয়েছে! আপনার ব্যালেন্স: ${(earnedPoints + referralEarnings).toFixed(2)} পয়েন্ট`, 'success');
                     
                     // Check if earned enough for withdrawal
-                    if (earnedPoints + referralEarnings >= MIN_WITHDRAW_TAKA) {
-                        showNotification(`অভিনন্দন! আপনি উত্তোলনের জন্য ${MIN_WITHDRAW_TAKA} টাকা সংগ্রহ করেছেন।`, 'info');
+                    if (earnedPoints + referralEarnings >= MIN_WITHDRAW_POINTS) {
+                        showNotification(`অভিনন্দন! আপনি উত্তোলনের জন্য ${MIN_WITHDRAW_POINTS} পয়েন্ট সংগ্রহ করেছেন।`, 'info');
                     }
                     
                     // If in auto mode, continue after delay
@@ -1016,21 +2023,21 @@
         // Show withdraw form
         function showWithdrawForm() {
             // উত্তোলন পেজ দেখান
-            showPage('withdraw-page', document.querySelector('.nav-item:nth-child(3)'));
+            showPage('withdraw-page', document.querySelector('.nav-item:nth-child(4)'));
             
-            const totalEarnings = earnedPoints + referralEarnings;
+            const totalPoints = earnedPoints + referralEarnings;
             
-            if (totalEarnings < MIN_WITHDRAW_TAKA) {
+            if (totalPoints < MIN_WITHDRAW_POINTS) {
                 document.getElementById('withdraw-status').textContent = 
-                    `ন্যূনতম উত্তোলন পরিমাণ ${MIN_WITHDRAW_TAKA} টাকা। আপনার আছে ${totalEarnings.toFixed(2)} টাকা।`;
+                    `ন্যূনতম উত্তোলন পরিমাণ ${MIN_WITHDRAW_POINTS} পয়েন্ট। আপনার আছে ${totalPoints.toFixed(2)} পয়েন্ট।`;
                 document.getElementById('withdraw-status').className = 'error-message';
                 document.getElementById('withdraw-section').style.display = 'block';
                 return;
             }
             
             document.getElementById('withdraw-amount').value = '';
-            document.getElementById('withdraw-amount').placeholder = `সর্বোচ্চ: ${totalEarnings.toFixed(2)} টাকা`;
-            document.getElementById('withdraw-amount').max = totalEarnings.toFixed(2);
+            document.getElementById('withdraw-amount').placeholder = `সর্বোচ্চ: ${totalPoints.toFixed(2)} পয়েন্ট`;
+            document.getElementById('withdraw-amount').max = totalPoints.toFixed(2);
             document.getElementById('withdraw-phone').value = '';
             document.getElementById('payment-method').selectedIndex = 0;
             document.getElementById('withdraw-status').textContent = '';
@@ -1039,27 +2046,27 @@
 
         // Handle withdrawal request
         function withdrawPoints() {
-            const amount = parseFloat(document.getElementById('withdraw-amount').value);
+            const pointsAmount = parseFloat(document.getElementById('withdraw-amount').value);
             const paymentMethod = document.getElementById('payment-method').value;
             const phoneNumber = document.getElementById('withdraw-phone').value;
-            const totalEarnings = earnedPoints + referralEarnings;
+            const totalPoints = earnedPoints + referralEarnings;
             const withdrawStatus = document.getElementById('withdraw-status');
             
             // Validate inputs
-            if (!amount || isNaN(amount)) {
+            if (!pointsAmount || isNaN(pointsAmount)) {
                 withdrawStatus.textContent = 'দয়া করে একটি বৈধ পরিমাণ লিখুন।';
                 withdrawStatus.className = 'error-message';
                 return;
             }
             
-            if (amount < MIN_WITHDRAW_TAKA) {
-                withdrawStatus.textContent = `ন্যূনতম উত্তোলন পরিমাণ ${MIN_WITHDRAW_TAKA} টাকা।`;
+            if (pointsAmount < MIN_WITHDRAW_POINTS) {
+                withdrawStatus.textContent = `ন্যূনতম উত্তোলন পরিমাণ ${MIN_WITHDRAW_POINTS} পয়েন্ট।`;
                 withdrawStatus.className = 'error-message';
                 return;
             }
             
-            if (amount > totalEarnings) {
-                withdrawStatus.textContent = `পর্যাপ্ত ব্যালেন্স নেই। আপনার আছে ${totalEarnings.toFixed(2)} টাকা।`;
+            if (pointsAmount > totalPoints) {
+                withdrawStatus.textContent = `পর্যাপ্ত ব্যালেন্স নেই। আপনার আছে ${totalPoints.toFixed(2)} পয়েন্ট।`;
                 withdrawStatus.className = 'error-message';
                 return;
             }
@@ -1077,16 +2084,16 @@
             }
             
             // Calculate points to deduct
-            let remainingAmount = amount;
+            let remainingPoints = pointsAmount;
             
             if (referralEarnings > 0) {
-                const referralDeduction = Math.min(referralEarnings, remainingAmount);
+                const referralDeduction = Math.min(referralEarnings, remainingPoints);
                 referralEarnings -= referralDeduction;
-                remainingAmount -= referralDeduction;
+                remainingPoints -= referralDeduction;
             }
             
-            if (remainingAmount > 0) {
-                earnedPoints -= remainingAmount;
+            if (remainingPoints > 0) {
+                earnedPoints -= remainingPoints;
                 if (earnedPoints < 0) earnedPoints = 0;
             }
             
@@ -1094,15 +2101,21 @@
             saveUserData();
             updateUI();
             
+            // Calculate Taka amount
+            const takaAmount = pointsAmount / 10;
+            
             // Prepare withdrawal message
             const message = `📌 নতুন উত্তোলন অনুরোধ 📌\n\n` +
                              `👤 ব্যবহারকারী আইডি: ${userId}\n` +
-                             `💰 পরিমাণ: ${amount} টাকা\n` +
+                             `💰 পয়েন্ট: ${pointsAmount}\n` +
+                             `💵 টাকা: ${takaAmount.toFixed(2)}\n` +
                              `📱 মাধ্যম: ${paymentMethod.toUpperCase()}\n` +
                              `📞 ফোন: ${phoneNumber}\n\n` +
                              `📊 দেখা বিজ্ঞাপন: ${watchedAdsCount}\n` +
                              `👥 আমন্ত্রিত: ${referralCount}\n` +
-                             `💵 মোট আয়: ${totalEarnings.toFixed(2)} টাকা`;
+                             `🎯 সম্পন্ন টাস্ক: ${Object.keys(completedTasks).length}\n` +
+                             `⛏️ মাইনিং পয়েন্ট: ${miningSessionPoints}\n` +
+                             `💵 মোট পয়েন্ট: ${totalPoints.toFixed(2)}`;
             
             // Send to admin via Telegram
             sendWithdrawRequestToAdmin(message);
@@ -1120,7 +2133,7 @@
             }, 3000);
         }
 
-        // Send withdrawal request to admin via Telegram bot
+        // Send withdrawal request to admin via Telegram bot - আপডেট করা হয়েছে
         function sendWithdrawRequestToAdmin(message) {
             // Telegram API URL তৈরি করুন
             const apiUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${ADMIN_CHAT_ID}&text=${encodeURIComponent(message)}`;
